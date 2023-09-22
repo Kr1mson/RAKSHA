@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -11,6 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Raksha"
         tools:targetApi="31">
+
+        
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDtTQ8RKX-V6hmGqUE_Ep3FgH9Z_zm-EJQ" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".Signup"
             android:exported="false" />
