@@ -59,11 +59,13 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/name_edtxt"
                 android:inputType="text"
                 android:hint="Enter here"
                 android:backgroundTint="@color/prim"
                 android:textColor="@color/black"
                 android:textColorHint="@color/prim"
+                android:alpha="0.3"
                 />
 
             <View
@@ -78,8 +80,10 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/email_edtxt"
                 android:inputType="textEmailAddress"
                 android:hint="Enter here"
+                android:alpha="0.3"
                 android:backgroundTint="@color/prim"
                 android:textColor="@color/black"
                 android:textColorHint="@color/prim"
@@ -100,6 +104,7 @@
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/prim"
                 app:boxBackgroundColor="@color/prim"
+                android:alpha="0.3"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -128,6 +133,7 @@
                 android:layout_height="wrap_content"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/prim"
+                android:alpha="0.3"
                 app:boxBackgroundColor="@color/prim"
                 >
 
@@ -144,6 +150,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/chkbox"
                 android:text="I agree to the Terms and Conditions"
                 android:textColor="@color/black"
                 android:buttonTint="@color/black"/>

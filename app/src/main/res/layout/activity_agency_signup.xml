@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Agency_Signup"
+    android:background="@drawable/logo_portrait">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="30dp"
+        android:layout_above="@id/card_view_agencySignup">
+    </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card_view_agencySignup"
+        android:layout_alignParentBottom="true"
+        app:cardCornerRadius="28dp"
+        app:cardBackgroundColor="@color/sec"
+        android:layout_marginBottom="-20dp"
+        android:alpha="0.8">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registration"
+                android:textStyle="bold"
+                android:textColor="@color/prim"
+                android:textSize="35sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="For Rescue Agencies"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Name of Agency"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/agency_edtxt"
+                android:inputType="text"
+                android:hint="Enter Here"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:alpha="0.3"
+                android:backgroundTint="@color/prim"
+                android:drawableEnd="@drawable/done_icon"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Helpline Number"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/helpline_edtxt"
+                android:inputType="phone"
+                android:hint="Enter Here"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:alpha="0.3"
+                android:backgroundTint="@color/prim"
+                android:drawableEnd="@drawable/done_icon"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type of Agency"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/typeSpinner"
+
+                android:foregroundTint="@color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Please Specify"
+                android:visibility="gone"
+                android:id="@+id/agency_signup_hidden_edtxt"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:alpha="0.3"
+                android:backgroundTint="@color/prim"
+                android:inputType="text"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin Key"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/PasswordLayout_adminKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/prim"
+                android:alpha="0.3"
+                android:backgroundTint="@color/prim">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Password_adminKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/sec"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Set Password"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/PasswordLayout_agency_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/prim"
+                android:alpha="0.3"
+                android:backgroundTint="@color/prim">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Password_agency_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/sec"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Re-enter Password"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/RePasswordLayout_agency_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/prim"
+                android:alpha="0.3"
+                android:backgroundTint="@color/prim">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RePassword_agency_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/sec"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/agency_signup_button"
+                android:text="Sign up"
+                android:backgroundTint="@color/prim"
+                app:cornerRadius="28dp"/>
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

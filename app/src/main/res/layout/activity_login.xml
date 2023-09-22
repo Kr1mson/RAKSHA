@@ -8,11 +8,7 @@
     android:background="@drawable/logo_portrait"
     tools:context=".Login"
     android:id="@+id/login_activity">
-  <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="@color/sec"
-      android:alpha="0.0"/>
+
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -53,7 +49,7 @@
           android:layout_height="wrap_content"
           android:text="Please Login"
           android:textColor="@color/black"
-          android:alpha="0.7"/>
+          />
       <View
           android:layout_width="wrap_content"
           android:layout_height="30dp"/>
@@ -63,10 +59,11 @@
           android:text="Email"
           android:textColor="@color/black"
           android:textStyle="bold"
-          android:alpha="0.7"/>
+          />
       <EditText
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:id="@+id/email_edtxt"
           android:inputType="textEmailAddress"
           android:hint="abc@example.com"
           android:textColorHint="@color/black"
@@ -83,7 +80,7 @@
           android:hint="Password"
           android:textColorHint="@color/black"
           android:textStyle="bold"
-          android:alpha="0.7"/>
+          />
       <com.google.android.material.textfield.TextInputLayout
           android:id="@+id/PasswordLayout_login"
           android:layout_width="match_parent"
@@ -100,7 +97,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/sec"
-
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:inputType="textPassword" />
@@ -108,17 +104,11 @@
       <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="Remember Me"
-            android:buttonTint="@color/black"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/black" />
+
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/forgotpswd_button"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:text="Forgot Password"
@@ -150,10 +140,29 @@
           android:layout_width="wrap_content"
           android:layout_height="50dp"
           android:layout_gravity="center"
-          android:text="Sign up instead"
+          android:text="Sign up as a USer"
           android:textColor="@color/prim"
           android:backgroundTint="@color/sec"
-          android:id="@+id/signup_button"/>
+          android:id="@+id/user_signup_button"/>
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="15sp"/>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="OR"
+          android:textStyle="bold"
+          android:textColor="@color/black"
+          android:layout_gravity="center"/>
+      <com.google.android.material.button.MaterialButton
+          android:layout_width="wrap_content"
+          android:layout_height="50dp"
+          android:text="Sign up your Agency"
+          android:layout_gravity="center"
+          android:textColor="@color/prim"
+          android:backgroundTint="@color/sec"
+          android:id="@+id/agency_signup_button"/>
+
 
     </LinearLayout>
 
