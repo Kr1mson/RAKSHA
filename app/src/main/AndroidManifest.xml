@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Raksha"
         tools:targetApi="31">
 
-        
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDtTQ8RKX-V6hmGqUE_Ep3FgH9Z_zm-EJQ" />
