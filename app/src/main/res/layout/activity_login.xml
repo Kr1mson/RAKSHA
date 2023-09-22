@@ -25,10 +25,10 @@
   <androidx.cardview.widget.CardView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      app:cardCornerRadius="28dp"
-      app:cardBackgroundColor="@color/sec"
-      android:layout_marginBottom="-20dp"
+        android:layout_alignParentBottom="true"
+        app:cardCornerRadius="28dp"
+        app:cardBackgroundColor="@color/sec"
+        android:layout_marginBottom="-20dp"
       android:id="@+id/card_view_login"
       android:alpha="0.8">
     <LinearLayout

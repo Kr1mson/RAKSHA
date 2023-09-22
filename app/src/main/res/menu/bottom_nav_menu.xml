@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/person"
+        android:id="@+id/Settings"
         android:title="Setting"
         android:icon="@drawable/settings_foreground"/>
     <item
-        android:id="@+id/home"
+        android:id="@+id/maps"
         android:title="Maps"
         android:icon="@drawable/maps_foreground"/>
     <item
-        android:id="@+id/settings"
+        android:id="@+id/Home"
+        android:title="Home"
+        android:icon="@drawable/home_foreground"/>
+    <item
+        android:id="@+id/SOS"
         android:title="SOS"
         android:icon="@drawable/sos_foreground"/>
+    <item
+        android:id="@+id/Alerts"
+        android:title="Alerts"
+        android:icon="@drawable/alert_foreground"/>
+
 
 </menu>
