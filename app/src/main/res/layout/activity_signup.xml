@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/logo_portrait"
+    tools:context=".Signup"
+    android:id="@+id/signup_container">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/sec"
+        android:alpha="0.0"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@+id/card_view_signup">
+
+
+    </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:cardCornerRadius="28dp"
+        app:cardBackgroundColor="@color/sec"
+        android:layout_marginBottom="-20dp"
+        android:alpha="0.8"
+        android:id="@+id/card_view_signup">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign up"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:textColor="@color/prim"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to the App"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Enter here"
+                android:backgroundTint="@color/prim"
+                android:textColor="@color/black"
+                android:textColorHint="@color/prim"
+                />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email Address"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Enter here"
+                android:backgroundTint="@color/prim"
+                android:textColor="@color/black"
+                android:textColorHint="@color/prim"
+                />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/PasswordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/prim"
+                app:boxBackgroundColor="@color/prim"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/sec"
+
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Re-enter Password"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/RePasswordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/prim"
+                app:boxBackgroundColor="@color/prim"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/sec"
+
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I agree to the Terms and Conditions"
+                android:textColor="@color/black"
+                android:buttonTint="@color/black"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Submit"
+                android:id="@+id/submit_btn"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>
