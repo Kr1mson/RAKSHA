@@ -56,16 +56,16 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Email"
+          android:text="Phone Number"
           android:textColor="@color/black"
           android:textStyle="bold"
           />
       <EditText
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:id="@+id/email_edtxt"
-          android:inputType="textEmailAddress"
-          android:hint="abc@example.com"
+          android:id="@+id/ph_edtxt"
+          android:inputType="phone"
+          android:hint="10 digit Mobile Number without Prefixes"
           android:textColorHint="@color/black"
           android:textColor="@color/black"
           android:alpha="0.3"

@@ -12,9 +12,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class Agency_Signup extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String[] types = { "C", "Data structures",
-            "Interview prep", "Algorithms",
-            "DSA with java", "Other" };
+    String[] types = { "Fire Department", "Emergency Medical Services ",
+            "Search and Rescue", "Disaster Response Organization",
+            "Law Enforcement", "Other" };
     Button btn1;
     EditText hidden1;
     EditText Agency_edtxt;
