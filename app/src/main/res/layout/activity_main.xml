@@ -27,27 +27,18 @@
         app:menu="@menu/bottom_nav_menu"/>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/flFragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20sp" />
+
+
 
         <Button
             android:id="@+id/map_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="top"
             android:text="Go to Admin Homepage"
             />
 
-    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
