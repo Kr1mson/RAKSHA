@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),MainActivity2.class);
+                Intent i = new Intent(getApplicationContext(),MainActivitynavigation.class);
                 startActivity(i);
             }
         });
