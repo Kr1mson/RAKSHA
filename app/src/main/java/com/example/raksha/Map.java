@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.PackageManagerCompat;
 import androidx.fragment.app.Fragment;
@@ -60,26 +61,54 @@ public class Map extends Fragment {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 // When map is loaded
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+
+                googleMap.setMyLocationEnabled(true); // Enable the My Location layer
+                googleMap.getUiSettings().setMyLocationButtonEnabled(true); // Enable the My Location button
+
+                // Handle the case where the user's location is unavailable
+                client.getLastLocation().addOnCompleteListener(getActivity(), new OnCompleteListener<Location>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Location> task) {
+                        if (task.isSuccessful() && task.getResult() != null) {
+                            Location location = task.getResult();
+                            double latitude = location.getLatitude();
+                            double longitude = location.getLongitude();
+
+                            // Create a LatLng object for the user's location
+                            LatLng userLocation = new LatLng(latitude, longitude);
+
+                            // Add a marker for the user's location
+                            MarkerOptions markerOptions = new MarkerOptions();
+                            markerOptions.position(userLocation);
+                            markerOptions.title("Your Location");
+                            googleMap.addMarker(markerOptions);
+
+                            // Move the camera to the user's location
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15)); // You can adjust the zoom level as needed
+                        } else {
+                            // Handle the case where the user's location is unavailable
+                            Toast.makeText(getActivity(), "Unable to get your location", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                // Set a click listener for the map if you want to add markers on click (you can keep your existing code for this)
                 googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(LatLng latLng) {
-                        // When clicked on map
-                        // Initialize marker options
-                        MarkerOptions markerOptions=new MarkerOptions();
-                        // Set position of marker
-                        markerOptions.position(latLng);
-                        // Set title of marker
-                        markerOptions.title(latLng.latitude+" : "+latLng.longitude);
-                        // Remove all marker
-                        googleMap.clear();
-                        // Animating to zoom the marker
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
-                        // Add marker on map
-                        googleMap.addMarker(markerOptions);
+                        // Your existing code for adding markers on map click
                     }
                 });
             }
         });
+
+
 
         // Assign variable
         btLocation = view.findViewById(R.id.bt_location);
