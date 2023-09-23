@@ -2,6 +2,7 @@ package com.example.raksha;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,10 +12,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.raksha.databinding.ActivityAgencySignupBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Agency_Signup extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] types = { "Fire Department", "Emergency Medical Services ",
             "Search and Rescue", "Disaster Response Organization",
             "Law Enforcement", "Other" };
+    ActivityAgencySignupBinding binding;
+    FirebaseDatabase agencydb;
+    DatabaseReference ag_ref;
     Button btn1;
     EditText hidden1;
     EditText Agency_edtxt;
@@ -34,6 +42,8 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
         Pswd_edtxt=findViewById(R.id.Password_agency_signup);
         RePswd_edtxt=findViewById(R.id.RePassword_agency_signup);
 
+
+
         Spinner spin = findViewById(R.id.typeSpinner);
         spin.setOnItemSelectedListener(this);
         ArrayAdapter ad = new ArrayAdapter(this, R.layout.spinner, types);
@@ -49,6 +59,13 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
                 AdminKey=AdminKey_edtxt.getText().toString();
                 Password=Pswd_edtxt.getText().toString();
                 Type=a;
+
+                if(!Agency.isEmpty() && !Helpline.isEmpty() && !AdminKey.isEmpty() && !Password.isEmpty() && !Type.isEmpty()){
+                    AgenecyUsers agu = new AgenecyUsers(Agency, Helpline, AdminKey,Password,Type);
+
+                }
+
+                Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
             }
         });
     }
