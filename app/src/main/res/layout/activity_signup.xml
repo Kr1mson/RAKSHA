@@ -159,7 +159,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Submit"
-                android:id="@+id/submit_btn"/>
+                android:id="@+id/submit_btn"
+                app:cornerRadius="28dp"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -12,5 +12,12 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/prim</item>
         <!-- Customize your theme here. -->
+
     </style>
+    <style name="floating_image" parent="Widget.Design.FloatingActionButton">
+        <item name = "android:foreground">
+            @drawable/floating_image_button
+        </item>
+    </style>
+
 </resources>

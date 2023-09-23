@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Agency_Profile"
+        android:title="Profile"
+        android:icon="@drawable/profile_foreground"/>
+    <item
+        android:id="@+id/Agency_Home"
+        android:title="Home"
+        android:icon="@drawable/home_foreground"/>
+    <item
+        android:id="@+id/Agency_Maps"
+        android:title="Map"
+        android:icon="@drawable/maps_foreground"/>
+
+</menu>
