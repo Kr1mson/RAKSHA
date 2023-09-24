@@ -18,5 +18,19 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="Widget.Raksha.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.Raksha.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <style name="WidgetTheme" parent="Theme.Material3.DayNight">
+        <item name="appWidgetRadius">@dimen/rounded_corners</item>
+        <item name="appWidgetInnerRadius">@dimen/rounded_corners_inner</item>
+        <item name="appWidgetPadding">0dp</item>
+    </style>
 
 </resources>

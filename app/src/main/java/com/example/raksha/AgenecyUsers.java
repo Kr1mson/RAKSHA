@@ -1,56 +1,49 @@
 package com.example.raksha;
 
-public class AgenecyUsers {
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+
+public class AgenecyUsers extends SQLiteOpenHelper {
     String ag_name, h_no, password, type, admin;
-
-    public AgenecyUsers(String agency, String helpline, String adminKey, String password, String type) {
+    private static final String DATABASE_NAME = "agencydb";
+    private static final String TABLE_NAME = "agencyusers";
+    AgenecyUsers(Context context){
+        super(context,DATABASE_NAME,null,1);
     }
 
-    public AgenecyUsers(String ag_name, String h_no, String password) {
-        this.ag_name = ag_name;
-        this.h_no = h_no;
-        this.password = password;
-        this.admin = admin;
-        this.type = type;
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table agencyusers (Agency TEXT, Helpline TEXT, AdminKey TEXT, Password TEXT,Lat Double, Long Double)");
     }
 
-    public String getAdmin() {
-        return admin;
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("drop table if exists agencyusers");
     }
-
-    public void setAdmin(String admin) {
-        this.admin = admin;
+    public boolean addText(String agency, String helpline, String adminKey, String password, Double Lat, Double Long){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Agency",agency);
+        contentValues.put("Helpline",helpline);
+        contentValues.put("AdminKey",adminKey);
+        contentValues.put("Password",password);
+        contentValues.put("Latitude",Lat);
+        contentValues.put("Longitude",Long);
+        long result = sqLiteDatabase.insert("agencyusers",null,contentValues);
+        if(result==-1)return false;
+        else return true;
     }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getAg_name() {
-        return ag_name;
-    }
-
-    public void setAg_name(String ag_name) {
-        this.ag_name = ag_name;
-    }
-
-    public String getH_no() {
-        return h_no;
-    }
-
-    public void setH_no(String h_no) {
-        this.h_no = h_no;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public boolean checkuser(String helpline){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        Cursor cursor = mydb.rawQuery("select * from agencyusers where helpline = ?",new String[]{helpline});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
     }
 }

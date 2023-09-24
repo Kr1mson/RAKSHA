@@ -104,7 +104,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Agency signup Button
-                Intent i2=new Intent(getApplicationContext(), MainActivity.class);
+                Intent i2=new Intent(getApplicationContext(), Agency_Signup.class);
                 startActivity(i2);
             }
         });

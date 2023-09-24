@@ -1,5 +1,6 @@
 package com.example.raksha;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,8 +14,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.raksha.databinding.ActivityAgencySignupBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 public class Agency_Signup extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] types = { "Fire Department", "Emergency Medical Services ",
@@ -23,6 +28,7 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
     ActivityAgencySignupBinding binding;
     FirebaseDatabase agencydb;
     DatabaseReference ag_ref;
+    AgenecyUsers agu;
     Button btn1;
     EditText hidden1;
     EditText Agency_edtxt;
@@ -30,10 +36,13 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
     EditText AdminKey_edtxt;
     EditText Pswd_edtxt;
     EditText RePswd_edtxt;
+    EditText Type_edtxt;
     String a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityAgencySignupBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         setContentView(R.layout.activity_agency_signup);
         btn1=findViewById(R.id.agency_signup_button);
         Agency_edtxt=findViewById(R.id.agency_edtxt);
@@ -41,6 +50,8 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
         AdminKey_edtxt=findViewById(R.id.Password_adminKey);
         Pswd_edtxt=findViewById(R.id.Password_agency_signup);
         RePswd_edtxt=findViewById(R.id.RePassword_agency_signup);
+        Type_edtxt = findViewById(R.id.agency_signup_hidden_edtxt);
+        agu = new AgenecyUsers(this);
 
 
 
@@ -52,20 +63,38 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Sign up button
-                String Agency,Helpline,AdminKey,Password,Type;
+                String Agency,Helpline,AdminKey,Password,repswd;
                 Agency=Agency_edtxt.getText().toString();
                 Helpline=Helpline_edtxt.getText().toString();
                 AdminKey=AdminKey_edtxt.getText().toString();
                 Password=Pswd_edtxt.getText().toString();
-                Type=a;
+                repswd= RePswd_edtxt.getText().toString();
 
-                if(!Agency.isEmpty() && !Helpline.isEmpty() && !AdminKey.isEmpty() && !Password.isEmpty() && !Type.isEmpty()){
-                    AgenecyUsers agu = new AgenecyUsers(Agency, Helpline, AdminKey,Password,Type);
 
+                if(Agency.equals("")||Helpline.equals("")||AdminKey.equals("")||Password.equals("")){
+                    Toast.makeText(Agency_Signup.this, "Please fill all the fields",Toast.LENGTH_SHORT).show();
                 }
-
-                Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                else{
+                    if( agu.checkuser(Helpline)){
+                        Toast.makeText(Agency_Signup.this,"User already exists",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(Password.equals(repswd)){
+                        boolean registrationsuccess = agu.addText(Agency, Helpline, AdminKey, Password);
+                        if(registrationsuccess){
+                            Toast.makeText(Agency_Signup.this,"User Registered Successfuly",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else{
+                            Toast.makeText(Agency_Signup.this,"User Registration Failed",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else{
+                        Toast.makeText(Agency_Signup.this,"Passwords do not match",Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }
@@ -74,7 +103,7 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
     {
         a=types[position];
         //Selected type stored in a
-        if(a!="Other"){}
+        if(!Objects.equals(a, "Other")){}
         else{
             hidden1=(EditText)findViewById(R.id.agency_signup_hidden_edtxt);
             hidden1.setVisibility(View.VISIBLE);
