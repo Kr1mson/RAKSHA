@@ -5,28 +5,133 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Alerts"
-    android:background="@color/sec">
+    android:background="@color/prim">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <View
             android:layout_width="wrap_content"
-            android:layout_height="300dp"/>
+            android:layout_height="25dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alerts"
+            android:text="Request for Assistance"
             android:textStyle="bold"
-            android:textColor="@color/prim"
-            android:textSize="40sp"
+            android:textColor="@color/sec"
+            android:textSize="30sp"
             android:layout_gravity="center"/>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:cardCornerRadius="28dp"
+            app:cardBackgroundColor="@color/sec"
+            android:layout_marginBottom="-20dp"
+            android:id="@+id/card_view_login"
+            android:alpha="0.8">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:backgroundTint="@color/sec"
+                android:padding="30dp">
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agency "
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/em_edtxt"
+                    android:inputType="textEmailAddress"
+                    android:hint="Enter "
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:alpha="0.3"
+                    android:backgroundTint="@color/prim" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type of Emergency"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/em_edtxt1"
+                    android:inputType="textEmailAddress"
+                    android:hint="Enter "
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:alpha="0.3"
+                    android:backgroundTint="@color/prim" /><View
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/em_edtxt3"
+                    android:inputType="textEmailAddress"
+                    android:hint="Enter"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:alpha="0.3"
+                    android:backgroundTint="@color/prim" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/em_edtxt2"
+                    android:inputType="textEmailAddress"
+                    android:hint="If any"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:alpha="0.3"
+                    android:backgroundTint="@color/prim" />
 
-    </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/login_btn"
+                    android:text="Submit"
+                    android:backgroundTint="@color/prim"
+                    app:cornerRadius="28dp"/>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
 
 
 
