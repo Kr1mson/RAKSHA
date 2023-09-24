@@ -7,11 +7,17 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,21 +27,34 @@ import com.google.firebase.database.ValueEventListener;
 public class Login extends AppCompatActivity {
     DatabaseReference reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://raksha-sih-login-default-rtdb.firebaseio.com/");
     FirebaseDatabase userdb;
+    FirebaseAuth mAuth ;
     Button btn;
     Button btn1;
     Button btn2;
     Button btn3;
-    EditText ph_edtxt;
+    EditText email_edtxt;
     EditText pswd_edtxt;
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent i1 = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(i1);
+            finish();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mAuth = FirebaseAuth.getInstance();
         btn = findViewById(R.id.user_signup_button);
         btn1=findViewById(R.id.login_btn);
         btn2=findViewById(R.id.agency_signup_button);
         btn3=findViewById(R.id.forgotpswd_button);
-        ph_edtxt=findViewById(R.id.ph_edtxt);
+        email_edtxt=findViewById(R.id.em_edtxt);
         pswd_edtxt=findViewById(R.id.Password_login);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,45 +69,35 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login Button
-
-                String phone=ph_edtxt.getText().toString();
-                String pswd=pswd_edtxt.getText().toString();
-                userdb = FirebaseDatabase.getInstance();
-                DatabaseReference userRef = reference.child(phone);
-                //reference = userdb.getReference("Users");
-                //email and pswd stored for comparison
-                if(phone.isEmpty() || pswd.isEmpty()){
-                    Toast.makeText(Login.this,"Please fill all the fields",Toast.LENGTH_SHORT).show();
+                String email = String.valueOf(email_edtxt);
+                String password = String.valueOf(pswd_edtxt);
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                else{
-                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()) {
-                                // Get the user's password from the database.
-                                final String getPswd = snapshot.child("password").getValue(String.class);
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                                // Check if the password is correct.
-                                if (getPswd != null && getPswd.equals(pswd)) {
-                                    Toast.makeText(Login.this, "Successfully Logged in", Toast.LENGTH_SHORT).show();
-                                    Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                                    Intent i1 = new Intent(getApplicationContext(),MainActivity.class);
                                     startActivity(i1);
+                                    finish();
+                                    // Sign in success, update UI with the signed-in user's information
                                 } else {
-                                    Toast.makeText(Login.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                                    Intent i1 = new Intent(getApplicationContext(),MainActivity.class);
+                                    startActivity(i1);
+                                    finish();;
                                 }
-                            } else {
-                                Toast.makeText(Login.this, "Successfully Logged in", Toast.LENGTH_SHORT).show();
-                                Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(i1);
                             }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
+                        });
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
