@@ -18,22 +18,22 @@ public class AgenecyUsers extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table agencyusers (Agency TEXT, Helpline TEXT, AdminKey TEXT, Password TEXT,Lat Double, Long Double)");
+        db.execSQL("create table agencyusers (Agency TEXT, Helpline TEXT, AdminKey TEXT, Password TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists agencyusers");
     }
-    public boolean addText(String agency, String helpline, String adminKey, String password, Double Lat, Double Long){
+    public boolean addText(String agency, String helpline, String adminKey, String password){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Agency",agency);
         contentValues.put("Helpline",helpline);
         contentValues.put("AdminKey",adminKey);
         contentValues.put("Password",password);
-        contentValues.put("Latitude",Lat);
-        contentValues.put("Longitude",Long);
+        //contentValues.put("Latitude",Lat);
+        //contentValues.put("Longitude",Long);
         long result = sqLiteDatabase.insert("agencyusers",null,contentValues);
         if(result==-1)return false;
         else return true;

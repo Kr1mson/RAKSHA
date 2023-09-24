@@ -71,6 +71,7 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
                 repswd= RePswd_edtxt.getText().toString();
 
 
+
                 if(Agency.equals("")||Helpline.equals("")||AdminKey.equals("")||Password.equals("")){
                     Toast.makeText(Agency_Signup.this, "Please fill all the fields",Toast.LENGTH_SHORT).show();
                 }
