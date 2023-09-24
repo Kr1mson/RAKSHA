@@ -29,6 +29,7 @@ public class Login extends AppCompatActivity {
     FirebaseDatabase userdb;
     FirebaseAuth mAuth ;
     Button btn;
+    Users users;
     Button btn1;
     Button btn2;
     Button btn3;
@@ -56,6 +57,7 @@ public class Login extends AppCompatActivity {
         btn3=findViewById(R.id.forgotpswd_button);
         email_edtxt=findViewById(R.id.em_edtxt);
         pswd_edtxt=findViewById(R.id.Password_login);
+        users = new Users(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,35 +71,19 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login Button
-                String email = String.valueOf(email_edtxt);
-                String password = String.valueOf(pswd_edtxt);
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
-                    return;
+                String email = email_edtxt.getText().toString();
+                String password = pswd_edtxt.getText().toString();
+                boolean loggedin = users.checkAvailable(email,password);
+                if(loggedin){
+                    Toast.makeText(Login.this,"Successfully Logged in",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
-                    return;
+                else{
+                    Toast.makeText(Login.this,"User not found Please Sign up",Toast.LENGTH_SHORT).show();
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                                    Intent i1 = new Intent(getApplicationContext(),MainActivity.class);
-                                    startActivity(i1);
-                                    finish();
-                                    // Sign in success, update UI with the signed-in user's information
-                                } else {
-                                    Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                                    Intent i1 = new Intent(getApplicationContext(),MainActivity.class);
-                                    startActivity(i1);
-                                    finish();;
-                                }
-                            }
-                        });
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {

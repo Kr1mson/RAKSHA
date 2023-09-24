@@ -1,43 +1,54 @@
 package com.example.raksha;
 
-public class Users {
-    String full_name, email, password;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
-    public Users() {
+import java.util.ArrayList;
+
+public class Users extends SQLiteOpenHelper {
+    String ag_name, h_no, password, type, admin;
+    private static final String DATABASE_NAME = "usersdb";
+    private static final String TABLE_NAME = "users";
+    Users(Context context){
+        super(context,DATABASE_NAME,null,1);
     }
 
-    public Users( String full_name, String email, String password) {
-
-        this.full_name = full_name;
-        this.email = email;
-        this.password = password;
-
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table users (Fullname TEXT, Email TEXT, Password TEXT)");
     }
 
-
-
-
-    public String getFull_name() {
-        return full_name;
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("drop table if exists users");
     }
-
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public boolean addText(String fullname, String email, String password){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("FullName",fullname);
+        contentValues.put("Email",email);
+        contentValues.put("Password",password);
+        long result = sqLiteDatabase.insert("users",null,contentValues);
+        if(result==-1)return false;
+        else return true;
     }
-
-    public String getEmail() {
-        return email;
+    public boolean checkuser(String email){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        Cursor cursor = mydb.rawQuery("select * from users where Email = ?",new String[]{email});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public boolean checkAvailable(String email, String password){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        Cursor cursor = mydb.rawQuery("select * from users where Email = ? and Password = ?",new String[]{email, password});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
     }
 }

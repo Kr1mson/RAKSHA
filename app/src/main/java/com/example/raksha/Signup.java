@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Signup extends AppCompatActivity {
     public ActivitySignupBinding binding;
     FirebaseAuth mAuth;
+    Users users;
     String full_name, email, password, repassword;
     FirebaseDatabase userdb;
     DatabaseReference reference;
@@ -49,6 +50,7 @@ public class Signup extends AppCompatActivity {
         setContentView(binding.getRoot());
         super.onCreate(savedInstanceState);
         mAuth= FirebaseAuth.getInstance();
+        users = new Users(this);
 
         setContentView(R.layout.activity_signup);
         sbmt_btn=findViewById(R.id.submit_btn);
@@ -64,29 +66,32 @@ public class Signup extends AppCompatActivity {
                 email = email_edtxt.getText().toString();
                 password = Pswd_edtxt.getText().toString();
                 repassword = RePswd_edtxt.getText().toString();
-                if(full_name.isEmpty() || email.isEmpty() || password.isEmpty()){
-                    Toast.makeText(Signup.this,"Please Fill All the Fields",Toast.LENGTH_SHORT).show();
-                } else if (!password.equals(repassword)) {
-                    Toast.makeText(Signup.this,"Passwords Do not match",Toast.LENGTH_SHORT).show();
+                if(full_name.equals("")||email.equals("")||password.equals("")||repassword.equals("")){
+                    Toast.makeText(Signup.this, "Please fill all the fields",Toast.LENGTH_SHORT).show();
                 }
-                else if(!full_name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
-                    mAuth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(Signup.this, "Account Created Successfully.",
-                                                Toast.LENGTH_SHORT).show();
-                                        Intent i1 = new Intent(getApplicationContext(),MainActivity.class);
-                                        startActivity(i1);
-                                        finish();
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Toast.makeText(Signup.this, "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+                else{
+                    if( users.checkuser(email)){
+                        Toast.makeText(Signup.this,"User already exists",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(password.equals(repassword)){
+                        boolean registrationsuccess = users.addText(full_name,email,password);
+                        if(registrationsuccess){
+                            Toast.makeText(Signup.this,"User Registered Successfuly",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), Login.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else{
+                            Toast.makeText(Signup.this,"User Registered Successfully",Toast.LENGTH_SHORT).show();
+                            Intent i2 = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(i2);
+                            finish();
+                        }
+                    }
+                    else{
+                        Toast.makeText(Signup.this,"Passwords do not match",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
