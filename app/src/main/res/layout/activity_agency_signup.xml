@@ -21,8 +21,12 @@
         android:layout_alignParentBottom="true"
         app:cardCornerRadius="28dp"
         app:cardBackgroundColor="@color/sec"
+        android:layout_marginTop="250dp"
         android:layout_marginBottom="-20dp"
         android:alpha="0.8">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -200,6 +204,45 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bt_location"
+                android:text="Get Location"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latitude"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/prim"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_latitude"
+                android:text="0.0"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Longitude"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/prim"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_longitude"
+                android:text="0.0"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -208,9 +251,10 @@
                 android:backgroundTint="@color/prim"
                 app:cornerRadius="28dp"/>
 
+
         </LinearLayout>
 
-
+        </ScrollView>
 
     </androidx.cardview.widget.CardView>
 
