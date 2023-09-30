@@ -2,10 +2,14 @@ package com.example.raksha;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -35,6 +39,7 @@ public class Login extends AppCompatActivity {
     Button btn3;
     EditText email_edtxt;
     EditText pswd_edtxt;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
     public void onStart() {
         super.onStart();
@@ -58,6 +63,7 @@ public class Login extends AppCompatActivity {
         email_edtxt=findViewById(R.id.em_edtxt);
         pswd_edtxt=findViewById(R.id.Password_login);
         users = new Users(this);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

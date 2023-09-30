@@ -29,7 +29,7 @@ public class Signup extends AppCompatActivity {
     String full_name, email, password, repassword;
     FirebaseDatabase userdb;
     DatabaseReference reference;
-    Button sbmt_btn;
+    Button sbmt_btn,btn2;
 
     EditText Name_edtxt,email_edtxt,Pswd_edtxt,RePswd_edtxt;
     CheckBox chk1;
@@ -54,6 +54,7 @@ public class Signup extends AppCompatActivity {
 
         setContentView(R.layout.activity_signup);
         sbmt_btn=findViewById(R.id.submit_btn);
+        btn2=findViewById(R.id.go_back_login_btn);
         Name_edtxt=findViewById(R.id.name_edtxt);
         email_edtxt=findViewById(R.id.Email_edtxt);
         Pswd_edtxt=findViewById(R.id.Password);
@@ -93,6 +94,13 @@ public class Signup extends AppCompatActivity {
                         Toast.makeText(Signup.this,"Passwords do not match",Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Login.class);
+                startActivity(i);
             }
         });
     }}

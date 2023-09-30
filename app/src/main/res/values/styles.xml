@@ -7,6 +7,10 @@
         <item name="colorAccent">@color/sec</item>
     </style>
     <!-- Base application theme. -->
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/prim</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
 
 
     <style name="AppTheme.NoActionBar">
@@ -31,6 +35,14 @@
         <item name="appWidgetRadius">@dimen/rounded_corners</item>
         <item name="appWidgetInnerRadius">@dimen/rounded_corners_inner</item>
         <item name="appWidgetPadding">0dp</item>
+    </style>
+    <style name="spinner_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/gradient_spinner</item>
+
+
+        <item name="android:popupBackground">@color/sec</item>
     </style>
 
 </resources>
