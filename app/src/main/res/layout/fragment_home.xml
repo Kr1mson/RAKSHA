@@ -1,36 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Home"
-    android:background="@drawable/logo_portrait">
-
-
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
+    android:background="@drawable/bg123"
+    android:orientation="vertical">
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="28sp"
+        android:backgroundTint="@color/sec">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textStyle="bold"
-                android:textColor="@color/prim"
-                android:textSize="40sp"
-                android:layout_gravity="center"/>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"/>
+            android:text="Panic Button"
+            android:textSize="40sp"
+            android:textColor="#8B0000"
+            android:textStyle="bold"
+            android:layout_gravity="center"
 
-        </LinearLayout>
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sos_button"
+        style="@style/floating_image"
+        app:fabCustomSize="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="40sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hiddentxt1"
+        android:text="Help is on its way"
+        android:textSize="40sp"
+        android:textColor="#8B0000"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hiddentxt2"
+        android:text="Find a safe place to take shelter"
+        android:textSize="25sp"
+        android:textColor="@color/sec"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        />
 
 
-</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
