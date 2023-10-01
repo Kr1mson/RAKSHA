@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -29,7 +30,7 @@ public class SOS extends Fragment {
     View view;
 
     public SOS(){}
-    private TextView name,number;
+    private TextView name,number,hiddn;
     private Button btn;
     private Button btn1;
     private FloatingActionButton btn2;
@@ -44,12 +45,16 @@ public class SOS extends Fragment {
         btn = view.findViewById(R.id.edit_button);
         btn1 = view.findViewById(R.id.delete_button);
         btn2=view.findViewById(R.id.sos_button);
+        hiddn=view.findViewById(R.id.hiddentxt);
         SharedPreferences sf =getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         String Name =sf.getString("Name", "");
         String Number =sf.getString("Number", "");
         if((Name!="")&&(Number!="")){
         name.setText(Name);
         number.setText(Number);}
+        else{
+            hiddn.setVisibility(View.VISIBLE);
+        }
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +71,10 @@ public class SOS extends Fragment {
                 SharedPreferences.Editor editor=sf.edit();
                 editor.clear();
                 editor.commit();
-                name.setText("No Contact Saved");
+                name.setText("");
                 number.setText("");
+                hiddn.setVisibility(View.VISIBLE);
+                Toast.makeText(getActivity(), "Contact Successfully Deleted", Toast.LENGTH_SHORT).show();
 
 
             }

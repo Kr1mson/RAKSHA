@@ -1,116 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/rlv"
-    android:background="@color/sec">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:id="@+id/txtvw"
-            android:text="Contacts"
-            android:gravity="center_horizontal"
-            android:textColor="@color/prim"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            />
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
+    android:orientation="vertical"
+    android:background="@drawable/bg123"
+    >
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
 
-        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             app:cardCornerRadius="28dp"
-            android:backgroundTint="@color/prim"
-            android:alpha="0.7"
-            android:layout_marginLeft="-20dp"
-            android:layout_marginRight="15dp">
+            android:backgroundTint="@color/sec"
+
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10">
-
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Emergency Contact"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/black"/>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"/>
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@mipmap/emergency_contact"
+                    android:layout_gravity="center"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="30dp">
-
-                    <ImageView
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/emergency_contact"
-                        android:layout_gravity="center_vertical"/>
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="8">
-
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="Name: "
+                        android:layout_marginTop="10sp"
+                        android:textSize="20sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/contact_name"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:text="No Contact Saved"
-                        android:layout_marginTop="10sp"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/contact_number"
-                        android:textStyle="bold"
                         android:text=""
-                        android:textColor="@color/black"
+                        android:layout_marginTop="10sp"
                         android:textSize="20sp"/>
 
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="Number: "
+                        android:layout_marginTop="10sp"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/contact_number"
+                        android:textStyle="bold"
+                        android:text=""
+                        android:layout_marginTop="10sp"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hiddentxt"
+                    android:text="No Contact Saved yet"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="invisible"/>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal">
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/edit_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Edit"
                         android:textSize="10sp"
-                        android:id="@+id/edit_button"
-                        android:layout_marginLeft="150dp"
-                        app:cornerRadius="28dp"/>
+                        app:cornerRadius="28dp"
+                        android:backgroundTint="@color/tert"
+                        android:textColor="@color/sec"/>
+                    <View
+                        android:layout_width="20sp"
+                        android:layout_height="match_parent"/>
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/delete_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Delete"
                         android:textSize="10sp"
-                        android:id="@+id/delete_button"
-                        android:layout_marginLeft="150dp"
-                        app:cornerRadius="28dp"/>
+                        app:cornerRadius="28dp"
+                        android:backgroundTint="@color/red"
+                        android:textColor="@color/sec"/>
+
                 </LinearLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"/>
+
+
 
             </LinearLayout>
 
+
+
         </androidx.cardview.widget.CardView>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+
+        android:id="@+id/view2"
+        app:cardCornerRadius="100dp"
+        android:layout_marginTop="-70dp"
+        android:layout_gravity="center_horizontal">
+        <ImageView
+            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:id="@+id/imageView1"
+            android:src="@mipmap/bg123_zoomed_round"
+            android:scaleType="centerCrop"
+            />
+    </androidx.cardview.widget.CardView>
 
 
-    </LinearLayout>
+
+
+
+
 
 
 
@@ -121,15 +181,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/sos_button"
         style="@style/floating_image"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="25dp"
-
+        android:layout_gravity="center"
+android:layout_marginTop="-140dp"
+        app:fabCustomSize="125dp"
         />
 
 
 
 
 
-</RelativeLayout>
+</LinearLayout>
