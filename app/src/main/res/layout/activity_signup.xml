@@ -79,7 +79,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
+                android:text="Phone"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
             <com.google.android.material.textfield.TextInputLayout
@@ -93,14 +93,14 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Email_edtxt"
+                    android:id="@+id/Phone_edtxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sec"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
 
-                    android:inputType="textEmailAddress" />
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
             <View
                 android:layout_width="wrap_content"

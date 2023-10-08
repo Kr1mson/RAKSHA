@@ -29,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
-    DatabaseReference reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://raksha-sih-login-default-rtdb.firebaseio.com/");
+    DatabaseReference reference;
     FirebaseDatabase userdb;
     FirebaseAuth mAuth ;
     Button btn;
@@ -37,20 +37,9 @@ public class Login extends AppCompatActivity {
     Button btn1;
     Button btn2;
     Button btn3;
-    EditText email_edtxt;
+    EditText phone_edtxt;
     EditText pswd_edtxt;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent i1 = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(i1);
-            finish();
-        }
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +49,7 @@ public class Login extends AppCompatActivity {
         btn1=findViewById(R.id.login_btn);
         btn2=findViewById(R.id.agency_signup_button);
         btn3=findViewById(R.id.forgotpswd_button);
-        email_edtxt=findViewById(R.id.em_edtxt);
+        phone_edtxt=findViewById(R.id.ph_edtxt);
         pswd_edtxt=findViewById(R.id.Password_login);
         users = new Users(this);
 
@@ -77,19 +66,40 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login Button
-                String email = email_edtxt.getText().toString();
+                String phone = phone_edtxt.getText().toString();
                 String password = pswd_edtxt.getText().toString();
-                boolean loggedin = users.checkAvailable(email,password);
-                if(loggedin){
-                    Toast.makeText(Login.this,"Successfully Logged in",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
-                    finish();
+
+                if(phone.isEmpty()||password.isEmpty()){
+                    Toast.makeText(Login.this, "Please fill all the fields",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(Login.this,"User not found Please Sign up",Toast.LENGTH_SHORT).show();
-                }
+                    reference = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com").getReference("Users");
+                    reference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(phone)){
+                                final String getpassword = snapshot.child("password").getValue(String.class);
+                                if(getpassword.equals(password)){
+                                    Toast.makeText(Login.this,"Logged in Successfully", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                }
+                                else{
+                                    Toast.makeText(Login.this,"Wrong Password", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else{
+                                Toast.makeText(Login.this,"User Not Found Please Signup", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {

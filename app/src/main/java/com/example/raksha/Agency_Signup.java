@@ -73,6 +73,8 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
         Pswd_edtxt=findViewById(R.id.Password_agency_signup);
         RePswd_edtxt=findViewById(R.id.RePassword_agency_signup);
         Type_edtxt = findViewById(R.id.agency_signup_hidden_edtxt);
+        tvLatitude = findViewById(R.id.tv_latitude);
+        tvLongitude = findViewById(R.id.tv_longitude);
         agu = new AgenecyUsers(this);
 
 
@@ -86,35 +88,43 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
             @Override
             public void onClick(View v) {
                 String Agency,Helpline,AdminKey,Password,repswd;
+                String latitude, longitude;
                 Agency=Agency_edtxt.getText().toString();
                 Helpline=Helpline_edtxt.getText().toString();
                 AdminKey=AdminKey_edtxt.getText().toString();
                 Password=Pswd_edtxt.getText().toString();
                 repswd= RePswd_edtxt.getText().toString();
+                latitude = tvLatitude.getText().toString();
+                longitude = tvLongitude.getText().toString();
+
 
 
                 if(Agency.equals("")||Helpline.equals("")||AdminKey.equals("")||Password.equals("")){
                     Toast.makeText(Agency_Signup.this, "Please fill all the fields",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    if( agu.checkuser(Helpline)){
-                        Toast.makeText(Agency_Signup.this,"User already exists",Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if(Password.equals(repswd)){
-                        boolean registrationsuccess = agu.addText(Agency, Helpline, AdminKey, Password);
-                        if(registrationsuccess){
-                            Toast.makeText(Agency_Signup.this,"User Registered Successfuly",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                        else{
-                            Toast.makeText(Agency_Signup.this,"User Registration Failed",Toast.LENGTH_SHORT).show();
-                        }
+                    if(Password.equals(repswd) && AdminKey.equals("ShivainTestKey")){
+                        Agency_UserHelper userHelper = new Agency_UserHelper(Agency, Helpline, AdminKey, Password, latitude, longitude);
+                        agencydb = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com");
+                        ag_ref = agencydb.getReference("Agency_Details");
+                        ag_ref.child(Helpline).setValue(userHelper).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Agency_edtxt.setText("");
+                                Helpline_edtxt.setText("");
+                                Pswd_edtxt.setText("");
+                                AdminKey_edtxt.setText("");
+                                tvLatitude.setText("");
+                                tvLongitude.setText("");
+                                Toast.makeText(Agency_Signup.this,"User Registered Successfuly",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
                     }
                     else{
-                        Toast.makeText(Agency_Signup.this,"Passwords do not match",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Agency_Signup.this,"Admin Key/Passwords doesn't match",Toast.LENGTH_SHORT).show();
                     }
                 }
             }

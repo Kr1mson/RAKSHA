@@ -26,12 +26,12 @@ public class Signup extends AppCompatActivity {
     public ActivitySignupBinding binding;
     FirebaseAuth mAuth;
     Users users;
-    String full_name, email, password, repassword;
+    String full_name, phone, password, repassword;
     FirebaseDatabase userdb;
     DatabaseReference reference;
     Button sbmt_btn,btn2;
 
-    EditText Name_edtxt,email_edtxt,Pswd_edtxt,RePswd_edtxt;
+    EditText Name_edtxt,Pswd_edtxt,RePswd_edtxt, Phone_edtxt;
     CheckBox chk1;
     @Override
     public void onStart() {
@@ -56,7 +56,7 @@ public class Signup extends AppCompatActivity {
         sbmt_btn=findViewById(R.id.submit_btn);
         btn2=findViewById(R.id.go_back_login_btn);
         Name_edtxt=findViewById(R.id.name_edtxt);
-        email_edtxt=findViewById(R.id.Email_edtxt);
+        Phone_edtxt=findViewById(R.id.Phone_edtxt);
         Pswd_edtxt=findViewById(R.id.Password);
         RePswd_edtxt=findViewById(R.id.RePassword);
         chk1=findViewById(R.id.chkbox);
@@ -64,37 +64,37 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 full_name = Name_edtxt.getText().toString();
-                email = email_edtxt.getText().toString();
+                phone = Phone_edtxt.getText().toString();
                 password = Pswd_edtxt.getText().toString();
                 repassword = RePswd_edtxt.getText().toString();
-                if(full_name.equals("")||email.equals("")||password.equals("")||repassword.equals("")){
+                if(full_name.equals("")||phone.equals("")||password.equals("")||repassword.equals("")){
                     Toast.makeText(Signup.this, "Please fill all the fields",Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    if( users.checkuser(email)){
-                        Toast.makeText(Signup.this,"User already exists",Toast.LENGTH_SHORT).show();
-                        return;
+                else {
+                    if (password.equals(repassword)) {
+                        User_Helper userHelper = new User_Helper(full_name,password,phone);
+                        userdb = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com");
+                        reference = userdb.getReference("Users");
+                        reference.child(phone).setValue(userHelper).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Name_edtxt.setText("");
+                                Pswd_edtxt.setText("");
+                                Phone_edtxt.setText("");
+                                Toast.makeText(Signup.this, "User Registered Successfuly", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), Login.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        });
                     }
-                    if(password.equals(repassword)){
-                        boolean registrationsuccess = users.addText(full_name,email,password);
-                        if(registrationsuccess){
-                            Toast.makeText(Signup.this,"User Registered Successfuly",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), Login.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                        else{
-                            Toast.makeText(Signup.this,"User Registered Successfully",Toast.LENGTH_SHORT).show();
-                            Intent i2 = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(i2);
-                            finish();
-                        }
-                    }
-                    else{
-                        Toast.makeText(Signup.this,"Passwords do not match",Toast.LENGTH_SHORT).show();
+                    else {
+                        Toast.makeText(Signup.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
+
+                }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
