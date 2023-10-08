@@ -44,7 +44,7 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Email"
+          android:text="Phone"
           android:textColor="@color/black"
           android:textStyle="bold"
           />
@@ -59,14 +59,14 @@
           >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/em_edtxt"
+            android:id="@+id/ph_edtxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/sec"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
 
-            android:inputType="textEmailAddress" />
+            android:inputType="text" />
       </com.google.android.material.textfield.TextInputLayout>
       <View
           android:layout_width="wrap_content"
@@ -134,33 +134,38 @@
           android:layout_height="10dp"/>
     </LinearLayout>
   </androidx.cardview.widget.CardView>
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/user_signup_button"
+      android:layout_width="wrap_content"
+      android:layout_height="50dp"
+      android:layout_gravity="center"
+      android:backgroundTint="@color/tert"
+      android:text="Sign up as a User"
+      android:textColor="@color/sec" />
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/agency_signup_button"
+      android:layout_width="wrap_content"
+      android:layout_height="50dp"
+      android:layout_gravity="center"
+      android:backgroundTint="#8B0000"
+      android:text="Sign up your Agency"
+      android:textColor="@color/sec" />
+
   <View
       android:layout_width="wrap_content"
-      android:layout_height="250sp"/>
+      android:layout_height="250sp" />
+
   <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="horizontal"
       android:layout_gravity="center_horizontal">
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:text="Sign up as a USer"
-        android:textColor="@color/sec"
-        android:backgroundTint="@color/tert"
-        android:id="@+id/user_signup_button"/>
+
     <View
         android:layout_width="15sp"
         android:layout_height="wrap_content"/>
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="Sign up your Agency"
-        android:layout_gravity="center"
-        android:textColor="@color/sec"
-        android:backgroundTint="#8B0000"
-        android:id="@+id/agency_signup_button"/>
 
   </LinearLayout>
 

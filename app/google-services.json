@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "588959700957",
-    "firebase_url": "https://raksha-sih-login-default-rtdb.firebaseio.com",
-    "project_id": "raksha-sih-login",
-    "storage_bucket": "raksha-sih-login.appspot.com"
+    "project_number": "99093203085",
+    "firebase_url": "https://raksha-52b01-default-rtdb.firebaseio.com",
+    "project_id": "raksha-52b01",
+    "storage_bucket": "raksha-52b01.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:588959700957:android:5ee1aa4775400a5d304834",
+        "mobilesdk_app_id": "1:99093203085:android:90fb4c12e8cda1c2d8fac4",
         "android_client_info": {
           "package_name": "com.example.raksha"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBArWQtc1HE3jd6GpMN9JKAzT5P4y156SU"
+          "current_key": "AIzaSyChIp0orNdNd_Z-MEQdxUedU-u5h_YskDg"
         }
       ],
       "services": {

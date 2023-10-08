@@ -175,7 +175,7 @@
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
 
-                    android:inputType="textPassword" />
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
             <View
                 android:layout_width="wrap_content"
@@ -187,6 +187,22 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Password_agency_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:inputType="text"
+                android:textColor="@color/black"
+
+                android:textColorHint="@color/black" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/Password_signupLayout"
                 android:layout_width="match_parent"
@@ -198,21 +214,8 @@
 
                 >
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Password_agency_signup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-
-                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -267,6 +270,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="#8B0000"
+                        android:text="Get Current Location"
+                        android:textColor="@color/sec"
+                        app:cornerRadius="50dp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -332,15 +346,6 @@
                 <View
                     android:layout_width="150sp"
                     android:layout_height="wrap_content"/>
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/bt_location"
-                    android:text="Get Current Location"
-                    android:textColor="@color/sec"
-                    android:backgroundTint="#8B0000"
-                    android:layout_gravity="center_vertical"
-                    app:cornerRadius="28dp"/>
 
 
             </LinearLayout>
@@ -352,22 +357,19 @@
                 android:layout_height="5dp"
                 android:src="@drawable/dotted"
                 android:layerType="software" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/agency_signup_button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/prim"
+                android:text="Sign up"
+                android:textColor="@color/sec"
+                app:cornerRadius="28dp" />
+
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
-            
-
-
-
-
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:id="@+id/agency_signup_button"
-                android:text="Sign up"
-                android:textColor="@color/sec"
-                android:backgroundTint="@color/prim"
-                app:cornerRadius="28dp"/>
 
 
         </LinearLayout>
