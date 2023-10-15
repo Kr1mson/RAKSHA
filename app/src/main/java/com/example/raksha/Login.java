@@ -11,7 +11,9 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextPaint;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
@@ -37,7 +40,7 @@ public class Login extends AppCompatActivity {
     Button btn1;
     Button btn2;
     Button btn3;
-    EditText phone_edtxt;
+    EditText name_edtxt;
     EditText pswd_edtxt;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
@@ -49,7 +52,7 @@ public class Login extends AppCompatActivity {
         btn1=findViewById(R.id.login_btn);
         btn2=findViewById(R.id.agency_signup_button);
         btn3=findViewById(R.id.forgotpswd_button);
-        phone_edtxt=findViewById(R.id.ph_edtxt);
+        name_edtxt=findViewById(R.id.nam_edtxt);
         pswd_edtxt=findViewById(R.id.Password_login);
         users = new Users(this);
 
@@ -66,38 +69,66 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login Button
-                String phone = phone_edtxt.getText().toString();
+                String name = name_edtxt.getText().toString();
                 String password = pswd_edtxt.getText().toString();
 
-                if(phone.isEmpty()||password.isEmpty()){
-                    Toast.makeText(Login.this, "Please fill all the fields",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    reference = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com").getReference("Users");
-                    reference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                if (name.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(Login.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    reference = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com/").getReference("Users");
+                    DatabaseReference Ag_reference = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com/").getReference("Agency_Details");
+                    Query checkAgency = Ag_reference.orderByChild("ag_name").equalTo(name);
+                    Query checkUser = reference.orderByChild("fullname").equalTo(name);
+                    // Your previous code before the Firebase references
+
+// Check for agency login first
+                    checkAgency.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(phone)){
-                                final String getpassword = snapshot.child("password").getValue(String.class);
-                                if(getpassword.equals(password)){
-                                    Toast.makeText(Login.this,"Logged in Successfully", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
+                            if (snapshot.exists()) {
+                                // Your agency login logic here
+                                String passfromagdb = snapshot.child(name).child("admin").getValue(String.class);
+                                if (passfromagdb.equals(password)) {
+                                    Toast.makeText(Login.this, "Agency Login Successful", Toast.LENGTH_SHORT).show();
+                                    Intent in2 = new Intent(getApplicationContext(), MainActivity2.class);
+                                    startActivity(in2);
+                                } else {
+                                    Toast.makeText(Login.this, "Wrong Name/Password", Toast.LENGTH_SHORT).show();
                                 }
-                                else{
-                                    Toast.makeText(Login.this,"Wrong Password", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                            else{
-                                Toast.makeText(Login.this,"User Not Found Please Signup", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Check for regular user login
+                                checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if (snapshot.exists()) {
+                                            // Your user login logic here
+                                            String passfromdb = snapshot.child(name).child("password").getValue(String.class);
+                                            if (passfromdb.equals(password)) {
+                                                Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                                startActivity(intent);
+                                            } else {
+                                                Toast.makeText(Login.this, "Wrong Password/Name", Toast.LENGTH_SHORT).show();
+                                            }
+                                        } else {
+                                            Toast.makeText(Login.this, "User Not Found Please Signup", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        // Handle the error if the retrieval is canceled
+                                    }
+                                });
                             }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
+                            // Handle the error if the retrieval is canceled
                         }
                     });
+
 
                 }
             }

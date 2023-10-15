@@ -43,7 +43,7 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Phone"
+          android:text="Name"
           android:textColor="@color/black"
           android:textStyle="bold"
           />
@@ -58,7 +58,7 @@
           >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ph_edtxt"
+            android:id="@+id/nam_edtxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/sec"

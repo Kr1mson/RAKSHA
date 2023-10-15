@@ -75,7 +75,7 @@ public class Signup extends AppCompatActivity {
                         User_Helper userHelper = new User_Helper(full_name,password,phone);
                         userdb = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com");
                         reference = userdb.getReference("Users");
-                        reference.child(phone).setValue(userHelper).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        reference.child(full_name).setValue(userHelper).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 Name_edtxt.setText("");

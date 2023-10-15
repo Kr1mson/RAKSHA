@@ -107,13 +107,13 @@ public class Agency_Signup extends AppCompatActivity implements AdapterView.OnIt
                         Agency_UserHelper userHelper = new Agency_UserHelper(Agency, Helpline, AdminKey, Password, latitude, longitude);
                         agencydb = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com");
                         ag_ref = agencydb.getReference("Agency_Details");
-                        ag_ref.child(Helpline).setValue(userHelper).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        ag_ref.child(Agency).setValue(userHelper).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 Agency_edtxt.setText("");
                                 Helpline_edtxt.setText("");
-                                Pswd_edtxt.setText("");
                                 AdminKey_edtxt.setText("");
+                                Pswd_edtxt.setText("");
                                 tvLatitude.setText("");
                                 tvLongitude.setText("");
                                 Toast.makeText(Agency_Signup.this,"User Registered Successfuly",Toast.LENGTH_SHORT).show();
