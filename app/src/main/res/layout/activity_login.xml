@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,17 +9,16 @@
     tools:context=".Login"
     android:orientation="vertical"
     android:id="@+id/login_activity">
-  <View
-      android:layout_width="wrap_content"
-      android:layout_height="250sp"/>
+
   <androidx.cardview.widget.CardView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-        android:layout_marginLeft="60sp"
+      android:layout_marginLeft="60sp"
       android:layout_marginRight="60sp"
-        app:cardCornerRadius="28dp"
-        app:cardBackgroundColor="@color/sec"
-        android:layout_marginBottom="-20dp"
+      app:cardCornerRadius="28dp"
+      android:layout_centerVertical="true"
+      app:cardBackgroundColor="@color/sec"
+
       android:id="@+id/card_view_login"
       >
     <LinearLayout
@@ -135,42 +134,47 @@
     </LinearLayout>
   </androidx.cardview.widget.CardView>
 
-  <com.google.android.material.button.MaterialButton
-      android:id="@+id/user_signup_button"
-      android:layout_width="wrap_content"
-      android:layout_height="50dp"
-      android:layout_gravity="center"
-      android:backgroundTint="@color/tert"
-      android:text="Sign up as a User"
-      android:textColor="@color/sec" />
-
-  <com.google.android.material.button.MaterialButton
-      android:id="@+id/agency_signup_button"
-      android:layout_width="wrap_content"
-      android:layout_height="50dp"
-      android:layout_gravity="center"
-      android:backgroundTint="#8B0000"
-      android:text="Sign up your Agency"
-      android:textColor="@color/sec" />
-
-  <View
-      android:layout_width="wrap_content"
-      android:layout_height="250sp" />
-
   <LinearLayout
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="horizontal"
-      android:layout_gravity="center_horizontal">
-
+      android:layout_below="@id/card_view_login"
+      android:layout_alignParentBottom="true"
+      android:weightSum="2">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/user_signup_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/tert"
+        android:text="Sign up as a User"
+        android:textColor="@color/sec"
+        app:cornerRadius="28dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="20dp"/>
     <View
-        android:layout_width="15sp"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/agency_signup_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#8B0000"
+        android:text="Sign up your Agency"
+        android:layout_weight="1"
+        app:cornerRadius="28dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/sec" />
   </LinearLayout>
 
 
 
 
 
-  </LinearLayout>
+
+
+
+
+
+
+  </RelativeLayout>
