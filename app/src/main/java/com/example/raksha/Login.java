@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.hasChild(phone)){
-                                final String getpassword = snapshot.child("phone").child("password").getValue(String.class);
+                                final String getpassword = snapshot.child("password").getValue(String.class);
                                 if(getpassword.equals(password)){
                                     Toast.makeText(Login.this,"Logged in Successfully", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
