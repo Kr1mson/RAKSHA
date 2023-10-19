@@ -171,14 +171,15 @@
                 android:text="I agree to the Terms and Conditions"
                 android:textColor="@color/black"
                 android:buttonTint="@color/black"/>
+
             <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@color/sec"
-                android:text="Submit"
                 android:id="@+id/submit_btn"
-                app:cornerRadius="28dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:text="Submit"
+                android:textColor="@color/sec"
+                app:cornerRadius="28dp" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

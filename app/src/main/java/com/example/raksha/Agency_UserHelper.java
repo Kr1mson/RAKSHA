@@ -3,6 +3,9 @@ package com.example.raksha;
 public class Agency_UserHelper {
     String ag_name, h_no, password, admin;
     String latitude, longitude;
+    public Agency_UserHelper() {
+        // Default constructor required for calls to DataSnapshot.getValue(Agency_UserHelper.class)
+    }
 
     public Agency_UserHelper(String ag_name, String h_no, String password, String admin, String latitude, String longitude) {
         this.ag_name = ag_name;

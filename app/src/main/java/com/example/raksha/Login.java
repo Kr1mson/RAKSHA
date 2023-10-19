@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
                     DatabaseReference Ag_reference = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com/").getReference("Agency_Details");
                     Query checkAgency = Ag_reference.orderByChild("ag_name").equalTo(name);
                     Query checkUser = reference.orderByChild("fullname").equalTo(name);
-                    // Your previous code before the Firebase references
+
 
 // Check for agency login first
                     checkAgency.addListenerForSingleValueEvent(new ValueEventListener() {

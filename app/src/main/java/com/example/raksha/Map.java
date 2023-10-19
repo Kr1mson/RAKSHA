@@ -37,13 +37,20 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Map extends Fragment {
 
     // Initialize variables
     Button btLocation;
+    Button btlocation2;
     TextView tvLatitude, tvLongitude;
     FusedLocationProviderClient client;
+    GoogleMap googleMap;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -67,6 +74,41 @@ public class Map extends Fragment {
                         != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }
+                btlocation2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Firebase code to retrieve the data
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com").getReference("Agency_Details");
+
+                        if (googleMap != null) {
+                            databaseReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                        Agency_UserHelper agency = postSnapshot.getValue(Agency_UserHelper.class);
+                                        if (agency != null) {
+                                            String latitudeString = agency.getLatitude();
+                                            String longitudeString = agency.getLongitude();
+                                            try {
+                                                double latitude = Double.parseDouble(latitudeString);
+                                                double longitude = Double.parseDouble(longitudeString);
+                                                LatLng latLng = new LatLng(latitude, longitude);
+                                                googleMap.addMarker(new MarkerOptions().position(latLng).title(agency.getAg_name()));
+                                            } catch (NumberFormatException e) {
+                                                // Handle the exception appropriately
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    // Handle error
+                                }
+                            });
+                        }
+                    }
+                });
 
                 googleMap.setMyLocationEnabled(true); // Enable the My Location layer
                 googleMap.getUiSettings().setMyLocationButtonEnabled(true); // Enable the My Location button
@@ -114,11 +156,14 @@ public class Map extends Fragment {
         btLocation = view.findViewById(R.id.bt_location);
         tvLatitude = view.findViewById(R.id.tv_latitude);
         tvLongitude = view.findViewById(R.id.tv_longitude);
+        btlocation2 = view.findViewById(R.id.bt_location2);
+
 
         // Initialize location client
         client = LocationServices
                 .getFusedLocationProviderClient(
                         getActivity());
+
 
         btLocation.setOnClickListener(
                 new View.OnClickListener() {
