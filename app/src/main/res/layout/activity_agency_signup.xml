@@ -76,9 +76,7 @@
                 android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -177,9 +175,6 @@
 
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -188,20 +183,9 @@
                 android:textStyle="bold"
                 />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/Password_agency_signup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
 
 
-                android:inputType="text"
-                android:textColor="@color/black"
 
-                android:textColorHint="@color/black" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="20dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/Password_signupLayout"
@@ -213,6 +197,16 @@
                 app:boxStrokeColor="@color/prim"
 
                 >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Password_agency_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:inputType="text"
+                    android:textColor="@color/black"
+
+                    android:textColorHint="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -271,24 +265,17 @@
                     android:orientation="vertical"
                     >
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/bt_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:backgroundTint="#8B0000"
-                        android:text="Get Current Location"
-                        android:textColor="@color/sec"
-                        app:cornerRadius="50dp" />
+
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Latitude"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/prim"
-                        android:layout_marginTop="16dp"/>
+                        android:layout_marginTop="10sp"
+                        />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/latLayout"
@@ -316,10 +303,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Longitude"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
-                        android:textColor="@color/prim"
-                        android:layout_marginTop="16dp"/>
+                        android:textColor="@color/prim" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/longLayout"
@@ -343,9 +329,16 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
-                <View
-                    android:layout_width="150sp"
-                    android:layout_height="wrap_content"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#8B0000"
+                    android:text="Get Current Location"
+                    android:textColor="@color/sec"
+                    app:cornerRadius="28dp"
+                    android:layout_marginLeft="10sp"/>
 
 
             </LinearLayout>

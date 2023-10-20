@@ -2,7 +2,8 @@
     style="@style/Widget.Raksha.AppWidget.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/WidgetTheme">
+    android:theme="@style/WidgetTheme"
+    android:id="@+id/widget_sos">
 
     <ImageView
         android:id="@+id/test"
