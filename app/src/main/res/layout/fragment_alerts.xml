@@ -73,6 +73,37 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Number"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/numberLayout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/prim"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/numberedtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/sec"
+                android:inputType="phone"
+                android:textColor="@color/black"
+
+                android:textColorHint="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
