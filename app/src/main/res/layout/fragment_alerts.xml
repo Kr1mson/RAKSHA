@@ -1,141 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Alerts"
-    android:background="@color/prim">
+    android:background="@color/sec">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/inputs_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:backgroundTint="@color/sec"
+        android:orientation="vertical"
+        android:padding="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/heading_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Request Assistance"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
         <View
             android:layout_width="wrap_content"
-            android:layout_height="25dp"/>
+            android:layout_height="15dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Request for Assistance"
-            android:textStyle="bold"
-            android:textColor="@color/sec"
-            android:textSize="30sp"
-            android:layout_gravity="center"/>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaz"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:cardCornerRadius="28dp"
-            app:cardBackgroundColor="@color/sec"
-            android:layout_marginBottom="-20dp"
-            android:id="@+id/card_view_login"
-            android:alpha="0.8">
-            <LinearLayout
+            android:text="Agency "
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/agencyNameLayout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/prim"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/agency_nm_edtxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:backgroundTint="@color/sec"
-                android:padding="30dp">
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Agency "
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/em_edtxt"
-                    android:inputType="textEmailAddress"
-                    android:hint="Enter "
-                    android:textColorHint="@color/black"
-                    android:textColor="@color/black"
-                    android:alpha="0.3"
-                    android:backgroundTint="@color/prim" />
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Type of Emergency"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/em_edtxt1"
-                    android:inputType="textEmailAddress"
-                    android:hint="Enter "
-                    android:textColorHint="@color/black"
-                    android:textColor="@color/black"
-                    android:alpha="0.3"
-                    android:backgroundTint="@color/prim" /><View
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/em_edtxt3"
-                    android:inputType="textEmailAddress"
-                    android:hint="Enter"
-                    android:textColorHint="@color/black"
-                    android:textColor="@color/black"
-                    android:alpha="0.3"
-                    android:backgroundTint="@color/prim" />
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Other"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/em_edtxt2"
-                    android:inputType="textEmailAddress"
-                    android:hint="If any"
-                    android:textColorHint="@color/black"
-                    android:textColor="@color/black"
-                    android:alpha="0.3"
-                    android:backgroundTint="@color/prim" />
+                android:inputType="text"
+                android:textColor="@color/black"
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:id="@+id/login_btn"
-                    android:text="Submit"
-                    android:backgroundTint="@color/prim"
-                    app:cornerRadius="28dp"/>
+                android:textColorHint="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="15dp" />
 
-            </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type of Emergency"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
-        </androidx.cardview.widget.CardView>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/typeLayout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
 
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/prim"
 
-    </RelativeLayout>
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/type_edtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/sec"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addressLayout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/prim">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address_edtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/sec"
+                android:inputType="text"
+                android:textColor="@color/black"
+
+                android:textColorHint="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/otherLayout"
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/prim">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/other_edtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/sec"
+                android:inputType="text"
+                android:textColor="@color/black"
+
+                android:textColorHint="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/prim"
+        android:text="Submit"
+        android:textColor="@color/sec"
+
+        app:cornerRadius="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 
 
-</RelativeLayout>
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

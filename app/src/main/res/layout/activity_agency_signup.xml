@@ -289,7 +289,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/tv_latitude"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/sec"
                             android:textColor="@color/black"
