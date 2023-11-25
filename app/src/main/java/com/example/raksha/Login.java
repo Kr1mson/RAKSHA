@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -55,6 +56,17 @@ public class Login extends AppCompatActivity {
         name_edtxt=findViewById(R.id.nam_edtxt);
         pswd_edtxt=findViewById(R.id.Password_login);
         users = new Users(this);
+
+        SharedPreferences preferences = getSharedPreferences("user_credentials", MODE_PRIVATE);
+        String username = preferences.getString("username", null);
+        String token = preferences.getString("pswd", null);
+
+        if (username != null && token != null) {
+            Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +117,11 @@ public class Login extends AppCompatActivity {
                                             String passfromdb = snapshot.child(name).child("password").getValue(String.class);
                                             if (passfromdb.equals(password)) {
                                                 Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                                                SharedPreferences preferences = getSharedPreferences("user_credentials", MODE_PRIVATE);
+                                                SharedPreferences.Editor editor = preferences.edit();
+                                                editor.putString("username",name );
+                                                editor.putString("pswd",password );
+                                                editor.apply();
                                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                                 startActivity(intent);
                                             } else {
