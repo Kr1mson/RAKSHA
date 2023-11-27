@@ -49,10 +49,10 @@ public class Agency_Home extends Fragment {
                     Alert_Helper alert = postSnapshot.getValue(Alert_Helper.class);
                     if (alert != null) {
                         String agency_name = alert.getAgencyName();
-                        String mobile = alert.getMobile();
-                        String type = alert.getAlertType();
-                        String address= alert.getAlertAddress();
-                        String other = alert.getOtherDetails();
+                        String mobile = "Phone Number:- "+alert.getMobile();
+                        String type = "Type:- "+alert.getAlertType();
+                        String address= "Address:- "+alert.getAlertAddress();
+                        String other = "Others:- "+alert.getOtherDetails();
                         MyItem myItem = new MyItem(agency_name, mobile, type, address, other);
                         itemList.add(myItem);
                     }

@@ -24,10 +24,7 @@
     <style name="Theme.Raksha.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
         <!-- Radius of the outer bound of widgets to make the rounded corners -->
         <item name="appWidgetRadius">16dp</item>
-        <!--
-        Radius of the inner view's bound of widgets to make the rounded corners.
-        It needs to be 8dp or less than the value of appWidgetRadius
-        -->
+
         <item name="appWidgetInnerRadius">8dp</item>
     </style>
 
@@ -36,8 +33,11 @@
         <item name="appWidgetPadding">16dp</item>
     </style>
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textColorHint">@color/prim</item>
+        <!-- Background color for the search bar -->
+        <item name="android:background">@color/sec</item>
+        <!-- Text color for the search bar -->
+        <item name="android:editTextColor">@color/black</item>
+        <!-- Other attributes you may want to customize -->
     </style>
 
 </resources>

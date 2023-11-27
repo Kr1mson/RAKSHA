@@ -12,42 +12,48 @@
         app:cardBackgroundColor="@color/prim"
         app:cardCornerRadius="28dp">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:padding="20dp"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"/>
+                android:textColor="@color/sec"
+                android:layout_gravity="center"
+                android:textSize="30dp"
+                android:textStyle="bold"/>
             <TextView
                 android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"/>
+                android:textColor="@color/sec"/>
             <TextView
                 android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"/>
+                android:textColor="@color/sec"/>
             <TextView
                 android:id="@+id/text4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"/>
+                android:textColor="@color/sec"/>
             <TextView
                 android:id="@+id/text5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"/>
-            <Button
+                android:textColor="@color/sec"/>
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FF0000"
+                android:layout_gravity="center"
+                android:backgroundTint="#8B0000"
                 android:text="Resolve"
-                android:textColor="@color/sec"/>
+                android:textColor="@color/sec"
+                app:cornerRadius="28dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
     <View

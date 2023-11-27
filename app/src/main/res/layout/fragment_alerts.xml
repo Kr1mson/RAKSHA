@@ -6,6 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Alerts"
     android:background="@color/sec">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <LinearLayout
         android:id="@+id/inputs_linear_layout"
@@ -17,6 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <TextView
             android:id="@+id/heading_txt"
@@ -39,6 +44,9 @@
             android:textColor="@color/black"
             android:text="To submit a rescue request, kindly complete the form below with accurate details. Include your name, contact information, and a concise description of the emergency. Specify location, type of assistance needed, and any relevant information. Your cooperation ensures swift and effective response. Thank you for entrusting us with your safety"/>
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="15dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -189,23 +197,29 @@
                 android:textColor="@color/black"
 
                 android:textColorHint="@color/black" />
+
         </com.google.android.material.textfield.TextInputLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitalert_btn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/prim"
+                android:text="Submit"
+                android:textColor="@color/sec"
+
+                app:cornerRadius="28dp"
+                />
+
+
 
 
     </LinearLayout>
+    </ScrollView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/submitalert_btn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/prim"
-        android:text="Submit"
-        android:textColor="@color/sec"
 
-        app:cornerRadius="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 

@@ -382,9 +382,9 @@ public class Map extends Fragment {
 
     private void displayAgencyDetails(Agency_UserHelper agency) {
         // Display agency details in TextViews
-        Agency_name.setText("Agency Name: " + agency.getAg_name());
-        Agency_helpline.setText("Helpline: " + agency.getH_no());
-        Agency_lat.setText("Latitude: " + agency.getLatitude());
-        Agency_long.setText("Longitude: " + agency.getLongitude());
+        Agency_name.setText(agency.getAg_name());
+        Agency_helpline.setText(agency.getH_no());
+        Agency_lat.setText(agency.getLatitude());
+        Agency_long.setText(agency.getLongitude());
     }
 }
