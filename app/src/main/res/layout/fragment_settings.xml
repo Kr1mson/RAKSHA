@@ -2,16 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/sec">
 
     <ImageView
         android:id="@+id/profileImage"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@mipmap/default_profile_image_round"
-        android:layout_gravity="center"/>
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/profile_picture" />
 
 
     <TextView
@@ -19,18 +21,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/prim"
+        android:textStyle="bold|italic"
+        android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/name_txt_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User"
-        android:textSize="16sp"
-        android:textColor="@color/black"/>
+
     <TextView
         android:id="@+id/Address_profile"
         android:layout_width="wrap_content"
@@ -45,6 +42,7 @@
         android:id="@+id/Address_txt_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="Not Updated"
         android:textSize="16sp"
         android:textColor="@color/black"/>
@@ -65,34 +63,21 @@
         android:text="Not Updated"
         android:textSize="16sp"
         android:textColor="@color/black"/>
-    <TextView
-        android:id="@+id/email_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/email_txt_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Not Updated"
-        android:textSize="16sp"
-        android:textColor="@color/black"/>
 
 
 
 
     <!-- Edit Profile Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/editProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/prim"
         android:text="Edit Profile"
         android:textColor="@color/sec"
-        android:layout_marginTop="16dp"/>
+        app:cornerRadius="28dp" />
 
 </LinearLayout>

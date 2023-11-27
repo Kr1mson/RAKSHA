@@ -9,11 +9,13 @@
     android:layout_height="match_parent"
     tools:context=".Map"
     android:background="@color/sec">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        >
 
         <fragment
             android:layout_width="match_parent"
@@ -21,6 +23,9 @@
             android:id="@+id/google_map"
             android:name="com.google.android.gms.maps.SupportMapFragment"/>
     </LinearLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,6 +33,13 @@
         android:orientation="vertical"
         android:layout_marginTop="30dp">
 
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search"
+            style="@style/SearchViewStyle"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -169,4 +181,6 @@
 
 
     </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

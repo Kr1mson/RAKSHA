@@ -35,5 +35,9 @@
         <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
         <item name="appWidgetPadding">16dp</item>
     </style>
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/prim</item>
+    </style>
 
 </resources>

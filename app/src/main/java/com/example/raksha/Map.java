@@ -1,7 +1,15 @@
 package com.example.raksha;
 
 
-
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
+import java.util.ArrayList;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,7 +17,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
 import android.view.LayoutInflater;
@@ -17,11 +24,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.PackageManagerCompat;
+
 import androidx.fragment.app.Fragment;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -43,6 +49,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Map extends Fragment {
 
     // Initialize variables
@@ -52,6 +60,7 @@ public class Map extends Fragment {
     TextView Agency_name, Agency_type, Agency_helpline, Agency_lat, Agency_long;
     FusedLocationProviderClient client;
     GoogleMap googleMap;
+    SearchView searchView;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -61,6 +70,8 @@ public class Map extends Fragment {
         // Initialize view
         View view = inflater.inflate(R.layout.fragment_map,
                 container, false);
+
+
         SupportMapFragment supportMapFragment=(SupportMapFragment)
                 getChildFragmentManager().findFragmentById(R.id.google_map);
 
@@ -71,6 +82,8 @@ public class Map extends Fragment {
         Agency_helpline=view.findViewById(R.id.agency_helpline);
         Agency_lat=view.findViewById(R.id.agency_lat);
         Agency_long=view.findViewById(R.id.agency_long);
+
+
 
         // Async map
         supportMapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -204,6 +217,22 @@ public class Map extends Fragment {
                         }
                     }
                 });
+        searchView = view.findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Handle search query submission
+                performSearch(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Handle search query text change
+                // You may want to implement live search suggestions here
+                return true;
+            }
+        });
 
         // Return view
         return view;
@@ -234,6 +263,7 @@ public class Map extends Fragment {
                     .show();
         }
     }
+
 
     @SuppressLint("MissingPermission")
     private void getCurrentLocation()
@@ -317,5 +347,10 @@ public class Map extends Fragment {
                             .setFlags(
                                     Intent.FLAG_ACTIVITY_NEW_TASK));
         }
+    }
+    private void performSearch(String query) {
+        // Implement your search logic here
+        // You may want to update the fragment UI or start a new activity with search results
+        Toast.makeText(requireContext(), "Searching for: " + query, Toast.LENGTH_SHORT).show();
     }
 }
