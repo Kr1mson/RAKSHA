@@ -51,7 +51,7 @@ public class Agency_Map extends Fragment {
                              Bundle savedInstanceState)
     {
         // Initialize view
-        View view = inflater.inflate(R.layout.fragment_map,
+        View view = inflater.inflate(R.layout.fragment_agency__map,
                 container, false);
         SupportMapFragment supportMapFragment=(SupportMapFragment)
                 getChildFragmentManager().findFragmentById(R.id.google_map);
