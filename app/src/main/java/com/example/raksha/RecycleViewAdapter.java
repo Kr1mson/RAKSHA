@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,22 +31,26 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         MyItem currentItem = itemList.get(position);
 
         // Set the data to the views in the ViewHolder
-        holder.textView1.setText(currentItem.getText1());
-        holder.textView2.setText(currentItem.getText2());
-        holder.textView3.setText(currentItem.getText3());
-        holder.textView4.setText(currentItem.getText4());
-        holder.textView5.setText(currentItem.getText5());
+        holder.textView1.setText(currentItem.getAgencyName());
+        holder.textView2.setText(currentItem.getMobile());
+        holder.textView3.setText(currentItem.getAlertType());
+        holder.textView4.setText(currentItem.getAlertAddress());
+        holder.textView5.setText(currentItem.getOtherDetails());
 
         // Set onClickListener for the button
         holder.button.setOnClickListener(v -> {
-            // Handle button click
-            // You can use position to get the clicked item position
+            removeItem(position);
+            Toast.makeText(v.getContext(), "Alert Resolved", Toast.LENGTH_SHORT).show();
         });
     }
 
     @Override
     public int getItemCount() {
         return itemList.size();
+    }
+    public void removeItem(int position) {
+        itemList.remove(position);
+        notifyItemRemoved(position);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -1,19 +1,16 @@
 package com.example.raksha;
 
-public class MyItem {
+public class Alert_Helper {
     private String agencyName;
     private String mobile;
     private String alertType;
     private String alertAddress;
     private String otherDetails;
 
-    // Constructors, getters, and setters
+    public Alert_Helper(){
 
-    public MyItem() {
-        // Required empty public constructor for Firebase
     }
-
-    public MyItem(String agencyName, String mobile, String alertType, String alertAddress, String otherDetails) {
+    public Alert_Helper(String agencyName, String mobile, String alertType, String alertAddress, String otherDetails) {
         this.agencyName = agencyName;
         this.mobile = mobile;
         this.alertType = alertType;
@@ -61,3 +58,4 @@ public class MyItem {
         this.otherDetails = otherDetails;
     }
 }
+

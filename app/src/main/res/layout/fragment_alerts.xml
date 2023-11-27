@@ -38,9 +38,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="To submit a rescue request, kindly complete the form below with accurate details. Include your name, contact information, and a concise description of the emergency. Specify location, type of assistance needed, and any relevant information. Your cooperation ensures swift and effective response. Thank you for entrusting us with your safety"/>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,6 +45,10 @@
             android:text="Agency "
             android:textColor="@color/black"
             android:textStyle="bold" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="15dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/agencyNameLayout"
@@ -194,7 +195,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/login_btn"
+        android:id="@+id/submitalert_btn"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:backgroundTint="@color/prim"

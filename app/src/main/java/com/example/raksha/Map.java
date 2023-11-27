@@ -78,7 +78,6 @@ public class Map extends Fragment {
         btLocation = view.findViewById(R.id.bt_location);
         btlocation2 = view.findViewById(R.id.bt_location2);
         Agency_name=view.findViewById(R.id.agency_name);
-        Agency_type=view.findViewById(R.id.agency_type);
         Agency_helpline=view.findViewById(R.id.agency_helpline);
         Agency_lat=view.findViewById(R.id.agency_lat);
         Agency_long=view.findViewById(R.id.agency_long);
@@ -349,8 +348,43 @@ public class Map extends Fragment {
         }
     }
     private void performSearch(String query) {
-        // Implement your search logic here
-        // You may want to update the fragment UI or start a new activity with search results
-        Toast.makeText(requireContext(), "Searching for: " + query, Toast.LENGTH_SHORT).show();
+        if (!query.isEmpty()) {
+            // Perform a Firebase query to find the agency by name
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://raksha-52b01-default-rtdb.firebaseio.com").getReference("Agency_Details");
+            databaseReference.orderByChild("ag_name").equalTo(query).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    // Check if the query result is not empty
+                    if (dataSnapshot.exists()) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Agency_UserHelper agency = snapshot.getValue(Agency_UserHelper.class);
+                            if (agency != null) {
+                                // Display agency details in TextViews
+                                displayAgencyDetails(agency);
+                            }
+                        }
+                    } else {
+                        // Agency not found
+                        Toast.makeText(requireContext(), "Agency not found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle error
+                }
+            });
+        } else {
+            // Empty query, do something or show a message
+            Toast.makeText(requireContext(), "Please enter an agency name", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void displayAgencyDetails(Agency_UserHelper agency) {
+        // Display agency details in TextViews
+        Agency_name.setText("Agency Name: " + agency.getAg_name());
+        Agency_helpline.setText("Helpline: " + agency.getH_no());
+        Agency_lat.setText("Latitude: " + agency.getLatitude());
+        Agency_long.setText("Longitude: " + agency.getLongitude());
     }
 }
