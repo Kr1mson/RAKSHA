@@ -48,7 +48,8 @@ public class Map extends Fragment {
     // Initialize variables
     Button btLocation;
     Button btlocation2;
-    TextView tvLatitude, tvLongitude;
+
+    TextView Agency_name, Agency_type, Agency_helpline, Agency_lat, Agency_long;
     FusedLocationProviderClient client;
     GoogleMap googleMap;
 
@@ -62,6 +63,14 @@ public class Map extends Fragment {
                 container, false);
         SupportMapFragment supportMapFragment=(SupportMapFragment)
                 getChildFragmentManager().findFragmentById(R.id.google_map);
+
+        btLocation = view.findViewById(R.id.bt_location);
+        btlocation2 = view.findViewById(R.id.bt_location2);
+        Agency_name=view.findViewById(R.id.agency_name);
+        Agency_type=view.findViewById(R.id.agency_type);
+        Agency_helpline=view.findViewById(R.id.agency_helpline);
+        Agency_lat=view.findViewById(R.id.agency_lat);
+        Agency_long=view.findViewById(R.id.agency_long);
 
         // Async map
         supportMapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -153,10 +162,6 @@ public class Map extends Fragment {
 
 
         // Assign variable
-        btLocation = view.findViewById(R.id.bt_location);
-        tvLatitude = view.findViewById(R.id.tv_latitude);
-        tvLongitude = view.findViewById(R.id.tv_longitude);
-        btlocation2 = view.findViewById(R.id.bt_location2);
 
 
         // Initialize location client
@@ -259,15 +264,7 @@ public class Map extends Fragment {
                             if (location != null) {
                                 // When location result is not
                                 // null set latitude
-                                tvLatitude.setText(
-                                        String.valueOf(
-                                                location
-                                                        .getLatitude()));
-                                // set longitude
-                                tvLongitude.setText(
-                                        String.valueOf(
-                                                location
-                                                        .getLongitude()));
+
                             }
                             else {
                                 // When location result is null
@@ -297,16 +294,7 @@ public class Map extends Fragment {
                                         Location location1
                                                 = locationResult
                                                 .getLastLocation();
-                                        // Set latitude
-                                        tvLatitude.setText(
-                                                String.valueOf(
-                                                        location1
-                                                                .getLatitude()));
-                                        // Set longitude
-                                        tvLongitude.setText(
-                                                String.valueOf(
-                                                        location1
-                                                                .getLongitude()));
+
                                     }
                                 };
 

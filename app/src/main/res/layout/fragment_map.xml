@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp"
@@ -25,8 +25,133 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
 
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+
+            app:cardCornerRadius="28dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/agency_name"
+                android:textStyle="bold"
+                android:text="Agency Name"
+                android:textSize="30sp"
+                android:textColor="@color/prim"
+                android:layout_gravity="center"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Type:- "
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/agency_type"
+                    android:textStyle="bold"
+                    android:text="..."
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Helpline:- "
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/agency_helpline"
+                    android:textStyle="bold"
+                    android:text="..."
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Latitude:- "
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/agency_lat"
+                    android:textStyle="bold"
+                    android:text="..."
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Longitude:- "
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/agency_long"
+                    android:textStyle="bold"
+                    android:text="..."
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"/>
         <Button
             android:id="@+id/bt_location2"
             android:layout_width="match_parent"
@@ -34,44 +159,13 @@
             android:text="Display agency location" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bt_location"
-            android:text="Get Location"/>
+            android:text="Get Current Location"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Latitude"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:textColor="@color/prim"
-            android:layout_marginTop="16dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_latitude"
-            android:text="0.0"
-            android:textColor="@color/black"
-            android:textSize="24sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Longitude"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:textColor="@color/prim"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_longitude"
-            android:text="0.0"
-            android:textColor="@color/black"
-            android:textSize="24sp"/>
 
 
     </LinearLayout>

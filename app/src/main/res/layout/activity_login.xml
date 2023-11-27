@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,18 +11,20 @@
     android:id="@+id/login_activity">
 
   <androidx.cardview.widget.CardView
+      android:id="@+id/card_view_login"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="60sp"
-      android:layout_marginRight="60sp"
-      app:cardCornerRadius="28dp"
       android:layout_centerVertical="true"
       app:cardBackgroundColor="@color/sec"
 
-      android:id="@+id/card_view_login"
-      >
+      app:cardCornerRadius="28dp"
+      app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="316dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
 
@@ -31,28 +33,29 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="Login"
-          android:textSize="35sp"
-          android:textStyle="bold"
           android:layout_gravity="center_horizontal"
-          android:textColor="@color/prim"/>
+          android:text="Login"
+          android:textColor="@color/prim"
+          android:textSize="35sp"
+          android:textStyle="bold" />
 
       <View
           android:layout_width="wrap_content"
-          android:layout_height="30dp"/>
+          android:layout_height="30dp" />
+
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Name"
           android:textColor="@color/black"
-          android:textStyle="bold"
-          />
+          android:textStyle="bold" />
+
       <com.google.android.material.textfield.TextInputLayout
           android:id="@+id/PasswordLayout"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-
           style="@style/LoginTextInputLayoutStyle"
+          android:layout_width="match_parent"
+
+          android:layout_height="wrap_content"
           app:boxStrokeColor="@color/prim"
 
           >
@@ -62,30 +65,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/sec"
+            android:inputType="text"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
 
-            android:inputType="text" />
+            android:textColorHint="@color/black" />
       </com.google.android.material.textfield.TextInputLayout>
+
       <View
           android:layout_width="wrap_content"
-          android:layout_height="20dp"/>
+          android:layout_height="20dp" />
+
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:hint="Password"
           android:textColorHint="@color/black"
-          android:textStyle="bold"
-          />
+          android:textStyle="bold" />
+
       <com.google.android.material.textfield.TextInputLayout
           android:id="@+id/PasswordLayout_login"
+          style="@style/LoginTextInputLayoutStyle"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          app:passwordToggleEnabled="true"
-          app:passwordToggleTint="@color/prim"
-          style="@style/LoginTextInputLayoutStyle"
           app:boxStrokeColor="@color/prim"
-          >
+          app:passwordToggleEnabled="true"
+          app:passwordToggleTint="@color/prim">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Password_login"
@@ -93,78 +97,89 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/sec"
 
+            android:inputType="textPassword"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:inputType="textPassword" />
+            android:textColorHint="@color/black" />
       </com.google.android.material.textfield.TextInputLayout>
+
       <View
           android:layout_width="wrap_content"
-          android:layout_height="10dp"/>
+          android:layout_height="10dp" />
+
       <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/forgotpswd_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/forgotpswd_button"
-            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/sec"
             android:stateListAnimator="@null"
             android:text="Forgot Password"
-            android:textColor="@color/prim"
 
 
-            android:backgroundTint="@color/sec"/>
+            android:textColor="@color/prim" />
       </RelativeLayout>
+
       <View
           android:layout_width="wrap_content"
-          android:layout_height="10dp"/>
+          android:layout_height="10dp" />
+
       <com.google.android.material.button.MaterialButton
+          android:id="@+id/login_btn"
           android:layout_width="match_parent"
           android:layout_height="60dp"
-          android:id="@+id/login_btn"
+          android:backgroundTint="@color/prim"
           android:text="Login"
           android:textColor="@color/sec"
-          android:backgroundTint="@color/prim"
-          app:cornerRadius="28dp"/>
+          app:cornerRadius="28dp" />
+
       <View
           android:layout_width="match_parent"
-          android:layout_height="10dp"/>
+          android:layout_height="10dp" />
     </LinearLayout>
   </androidx.cardview.widget.CardView>
 
   <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
+      android:id="@+id/linearLayout2"
+      android:layout_width="405dp"
+      android:layout_height="60dp"
       android:layout_below="@id/card_view_login"
       android:layout_alignParentBottom="true"
-      android:weightSum="2">
+      android:orientation="horizontal"
+      android:weightSum="2"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/user_signup_button"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="1"
         android:backgroundTint="@color/tert"
         android:text="Sign up as a User"
         android:textColor="@color/sec"
-        app:cornerRadius="28dp"
-        android:layout_weight="1"
-        android:layout_marginLeft="20dp"/>
+        app:cornerRadius="28dp" />
+
     <View
         android:layout_width="20dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/agency_signup_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
         android:backgroundTint="#8B0000"
         android:text="Sign up your Agency"
-        android:layout_weight="1"
-        app:cornerRadius="28dp"
-        android:layout_marginRight="20dp"
-        android:textColor="@color/sec" />
+        android:textColor="@color/sec"
+        app:cornerRadius="28dp" />
   </LinearLayout>
 
 
@@ -177,4 +192,4 @@
 
 
 
-  </RelativeLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>

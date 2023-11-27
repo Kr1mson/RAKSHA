@@ -90,10 +90,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 editor.remove("username");
                 editor.remove("pswd");
                 editor.apply();
-                Intent intent = new Intent(getApplicationContext(), Signup.class);
+                Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
                 return true;
-            // Add more cases for other menu items
+
             default:
                 return super.onOptionsItemSelected(item);
         }
