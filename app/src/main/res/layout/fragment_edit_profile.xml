@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/sec">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Profile"
+        android:layout_gravity="center"
+        android:textSize="40dp"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/prim"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/profile_picture" />
+    <TextView
+        android:id="@+id/name_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/prim"
+        android:textStyle="bold|italic"
+        android:layout_gravity="center"/>
+
+
+
+    <TextView
+        android:id="@+id/Address_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/address_edt_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter"
+        android:textSize="16sp"
+        android:textColorHint="#5A5A5A"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/phno_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Number"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/phno_edt_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter"
+        android:textSize="16sp"
+        android:textColorHint="#5A5A5A"
+        android:textColor="@color/black"
+        android:inputType="phone"/>
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/tert"
+        android:text="Save"
+        android:textColor="@color/sec"
+        app:cornerRadius="28dp" />
+
+</LinearLayout>
