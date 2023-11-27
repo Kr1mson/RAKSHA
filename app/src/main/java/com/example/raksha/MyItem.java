@@ -1,6 +1,7 @@
 package com.example.raksha;
 
 public class MyItem {
+    private int id;
     private String text1;
     private String text2;
     private String text3;

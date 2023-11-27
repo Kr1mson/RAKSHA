@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,14 +39,18 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
         // Set onClickListener for the button
         holder.button.setOnClickListener(v -> {
-            // Handle button click
-            // You can use position to get the clicked item position
+            removeItem(position);
+            Toast.makeText(v.getContext(), "Working", Toast.LENGTH_SHORT).show();
         });
     }
 
     @Override
     public int getItemCount() {
         return itemList.size();
+    }
+    public void removeItem(int position) {
+        itemList.remove(position);
+        notifyItemRemoved(position);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
